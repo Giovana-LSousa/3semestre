@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Cursos • Blue & Pink </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <!-- NAVBAR -->
+    <nav class="bg-white border-b shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-x-3">
+                    <div class="w-10 h-10 rounded-3xl bg-gradient-to-br from-[#00bfff] to-[#ff69b4] flex items-center justify-center text-3xl shadow-inner"> 🖥 </div>
+                    <h1 class="logo-font text-4xl font-bold tracking-tighter bg-gradient-to-r from-[#00bfff] to-[#ff69b4] bg-clip-text text-transparent">Cursos</h1>
+                </div>
+
+                <button onclick="toggleCart()" class="flex items-center gap-x-3 hover:scale-105">
+                    <div class="relative">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                        <span id="cart-count-badge" class="absolute -top-2 -right-2 bg-[#ff69b4] text-white text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center shadow">0</span>
+                    </div>
+                    <span class="font-semibold text-lg hidden md:block">Carrinho</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO MELHORADO -->
+    <div class="hero-bg text-white py-24">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h1 class="text-5xl md:text-7xl font-bold logo-font tracking-tighter leading-none">
+                Aprenda da <br>melhor forma
+            </h1>
+            <p class="mt-6 text-xl md:text-2xl opacity-90 max-w-2xl mx-auto">
+                cursos incríveis 
+            </p>
+        </div>
+    </div>
+
+    <!-- CURSOS -->
+    <section class="max-w-7xl mx-auto px-6 py-16">
+        <h2 class="text-4xl font-bold logo-font mb-12 text-center">Nossos Cursos</h2>
+        
+        <div id="cursos-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            <!-- Preenchido pelo JavaScript -->
+        </div>
+    </section>
+
+    <!-- CARRINHO -->
+    <div id="cart-drawer" class="hidden fixed inset-0 bg-black/70 z-[100] flex justify-end">
+        <div onclick="event.stopImmediatePropagation()" class="cart-drawer bg-white w-full max-w-lg h-full shadow-2xl flex flex-col">
+            <div class="px-8 py-6 border-b flex items-center justify-between">
+                <h3 class="text-3xl font-bold">Seu Carrinho</h3>
+                <button onclick="toggleCart()" class="text-4xl text-slate-400 hover:text-black">×</button>
+            </div>
+
+            <div id="cart-items" class="flex-1 overflow-auto p-8 space-y-8"></div>
+
+            <div class="p-8 border-t">
+                <div class="flex justify-between text-2xl font-semibold mb-6">
+                    <span>Total</span>
+                    <span id="cart-total" class="text-[#00bfff]">R$ 0,00</span>
+                </div>
+                <button onclick="goToCheckout()" class="w-full py-7 rounded-3xl bg-gradient-to-r from-[#00bfff] to-[#ff69b4] text-white text-xl font-semibold shadow-xl">
+                    Finalizar Compra
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- DETALHES DOS CURSOS -->
+    <div id="course-modal" class="hidden fixed inset-0 bg-black/70 z-[110] flex items-center justify-center">
+        <div onclick="event.stopImmediatePropagation()" class="modal bg-white rounded-3xl max-w-2xl w-full mx-4 overflow-hidden">
+            <div id="modal-content" class="p-8"></div>
+        </div>
+    </div>
+
+    <script>
+        const coursesData = [ /* ... mesmos cursos ... */ 
+            /* ... curso 1 ... */ 
+            { id:1, nome:"UX/UI Design Masterclass", descricaoCurta:"Crie interfaces incríveis", descricaoCompleta:"Do zero ao avançado com Figma...", preco:249.90, imagem:"https://picsum.photos/id/1015/800/600", estrelas:"★★★★☆", nota:"4.8" },
+
+            /* ... curso 2 ... */ 
+            { id:2, nome:"Marketing Digital para Criadores", descricaoCurta:"Venda mais nas redes", descricaoCompleta:"Estratégias completas...", preco:179.90, imagem:"https://picsum.photos/id/1005/800/600", estrelas:"★★★★★", nota:"5.0" },
+
+            /* ... curso 3 ... */
+            { id:3, nome:"Desenvolvimento de Apps Mobile", descricaoCurta:"Apps bonitos e funcionais", descricaoCompleta:"Flutter + Firebase...", preco:329.90, imagem:"https://picsum.photos/id/1016/800/600", estrelas:"★★★★☆", nota:"4.7" },
+
+            /* ... curso 4 ... */
+            { id:4, nome:"Fotografia com Celular", descricaoCurta:"Fotos profissionais", descricaoCompleta:"Iluminação, composição...", preco:99.90, imagem:"https://picsum.photos/id/133/800/600", estrelas:"★★★★★", nota:"4.9" },
+
+            /* ... curso 5 ... */
+            { id:5, nome:"Edição de Vídeo", descricaoCurta:"Vídeos incríveis", descricaoCompleta:"CapCut e Premiere...", preco:139.90, imagem:"https://picsum.photos/id/201/800/600", estrelas:"★★★★☆", nota:"4.6" },
+
+            /* ... curso 6 ... */
+            { id:6, nome:"Inteligência Artificial", descricaoCurta:"IA no dia a dia", descricaoCompleta:"ChatGPT, Midjourney...", preco:219.90, imagem:"https://picsum.photos/id/251/800/600", estrelas:"★★★★★", nota:"5.0" },
+
+            /* ... curso 7 ... */
+            { id:7, nome:"Finanças Pessoais", descricaoCurta:"Organize seu dinheiro", descricaoCompleta:"Investimentos e controle...", preco:159.90, imagem:"https://picsum.photos/id/180/800/600", estrelas:"★★★★☆", nota:"4.8" },
+
+            /* ... curso 8 ... */
+            { id:8, nome:"Criação de Conteúdo", descricaoCurta:"Cresça no Instagram", descricaoCompleta:"Reels e carrosséis...", preco:129.90, imagem:"https://picsum.photos/id/1009/800/600", estrelas:"★★★★★", nota:"4.9" }
+        ];
+
+        let cart = [];
+
+        function renderCourses() {
+            const container = document.getElementById('cursos-grid');
+            let html = '';
+
+            coursesData.forEach(course => {
+                html += `
+                    <div onclick="showCourseDetails(${course.id})" class="course-card bg-white rounded-3xl overflow-hidden shadow-sm cursor-pointer">
+                        <img src="${course.imagem}" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="font-semibold text-xl">${course.nome}</h3>
+                            <p class="text-slate-500 mt-2 text-sm">${course.descricaoCurta}</p>
+                            
+                            <div class="flex items-center gap-2 mt-4">
+                                <span class="stars text-yellow-400">${course.estrelas}</span>
+                                <span class="text-slate-500 font-medium">${course.nota}</span>
+                            </div>
+                            
+                            <div class="mt-6 flex items-center justify-between">
+                                <span class="text-3xl font-bold text-[#00bfff]">R$ ${course.preco.toFixed(2).replace('.', ',')}</span>
+                                <button onclick="event.stopImmediatePropagation(); addToCart(${course.id});" 
+                                        class="px-7 py-3 bg-gradient-to-r from-[#00bfff] to-[#ff69b4] text-white rounded-3xl font-semibold">
+                                    + Carrinho
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        // Funções do Carrinho
+        function addToCart(id) {
+            const course = coursesData.find(c => c.id === id);
+            if (cart.find(item => item.id === id)) return alert("Já está no carrinho!");
+            cart.push(course);
+            updateCartCount();
+        }
+
+        function updateCartCount() {
+            document.getElementById('cart-count-badge').textContent = cart.length;
+        }
+
+        function renderCart() {
+            const container = document.getElementById('cart-items');
+            if (cart.length === 0) {
+                container.innerHTML = `<p class="text-center text-slate-400 py-20">Seu carrinho está vazio 🍦</p>`;
+                document.getElementById('cart-total').textContent = 'R$ 0,00';
+                return;
+            }
+
+            let total = 0;
+            let html = '';
+            cart.forEach(course => {
+                total += course.preco;
+                html += `
+                    <div class="flex gap-4">
+                        <img src="${course.imagem}" class="w-20 h-20 object-cover rounded-2xl">
+                        <div class="flex-1">
+                            <p class="font-medium">${course.nome}</p>
+                            <p class="text-sm text-slate-500">R$ ${course.preco.toFixed(2)}</p>
+                        </div>
+                        <button onclick="removeFromCart(${course.id})" class="text-red-500 text-2xl">×</button>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+            document.getElementById('cart-total').textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(c => c.id !== id);
+            updateCartCount();
+            renderCart();
+        }
+
+        function toggleCart() {
+            const drawer = document.getElementById('cart-drawer');
+            if (drawer.classList.contains('hidden')) {
+                renderCart();
+                drawer.classList.remove('hidden');
+            } else {
+                drawer.classList.add('hidden');
+            }
+        }
+
+        function showCourseDetails(id) {
+            const course = coursesData.find(c => c.id === id);
+            const html = `
+                <div class="flex justify-between">
+                    <h2 class="text-3xl font-bold">${course.nome}</h2>
+                    <button onclick="hideCourseModal()" class="text-4xl">×</button>
+                </div>
+                <img src="${course.imagem}" class="w-full h-80 object-cover rounded-3xl my-6">
+                <div class="flex justify-between items-center mb-6">
+                    <span class="text-4xl font-bold text-[#00bfff]">R$ ${course.preco}</span>
+                    <span class="stars text-yellow-400 text-4xl">${course.estrelas} <span class="text-xl text-slate-500">${course.nota}</span></span>
+                </div>
+                <p class="text-slate-700 leading-relaxed">${course.descricaoCompleta}</p>
+                <div class="flex gap-4 mt-10">
+                    <button onclick="addToCartFromModal(${course.id})" class="flex-1 py-6 rounded-3xl bg-gradient-to-r from-[#00bfff] to-[#ff69b4] text-white font-semibold">Adicionar ao Carrinho</button>
+                    <button onclick="hideCourseModal()" class="flex-1 py-6 rounded-3xl border">Fechar</button>
+                </div>
+            `;
+            document.getElementById('modal-content').innerHTML = html;
+            document.getElementById('course-modal').classList.remove('hidden');
+        }
+
+        function addToCartFromModal(id) {
+            hideCourseModal();
+            addToCart(id);
+        }
+
+        function hideCourseModal() {
+            document.getElementById('course-modal').classList.add('hidden');
+        }
+
+        function goToCheckout() {
+            if (cart.length === 0) return;
+            alert("🎉 Compra finalizada com sucesso! (Sistema integrado)");
+            cart = [];
+            updateCartCount();
+            toggleCart();
+        }
+
+        // Inicializar
+        window.onload = () => {
+            renderCourses();
+            updateCartCount();
+        };
+    </script>
+</body>
+</html>
