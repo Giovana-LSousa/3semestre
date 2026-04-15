@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Cursos • Blue & Pink </title>
+    <title> Import cell </title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -35,10 +35,10 @@
     <div class="hero-bg text-white py-24">
         <div class="max-w-7xl mx-auto px-6 text-center">
             <h1 class="text-5xl md:text-7xl font-bold logo-font tracking-tighter leading-none">
-                Aprenda da <br>melhor forma
+                Seu celular <br>esta aqui!
             </h1>
             <p class="mt-6 text-xl md:text-2xl opacity-90 max-w-2xl mx-auto">
-                cursos incríveis 
+                celulares importados
             </p>
         </div>
     </div>
@@ -83,6 +83,7 @@
 
     <script>
         const coursesData = [ /* ... mesmos cursos ... */ 
+            /*.... IMAGENS...*/
             /* ... curso 1 ... */ 
             { id:1, nome:"UX/UI Design Masterclass", descricaoCurta:"Crie interfaces incríveis", descricaoCompleta:"Do zero ao avançado com Figma...", preco:249.90, imagem:"https://picsum.photos/id/1015/800/600", estrelas:"★★★★☆", nota:"4.8" },
 
@@ -156,7 +157,7 @@
         function renderCart() {
             const container = document.getElementById('cart-items');
             if (cart.length === 0) {
-                container.innerHTML = `<p class="text-center text-slate-400 py-20">Seu carrinho está vazio 🍦</p>`;
+                container.innerHTML = `<p class="text-center text-slate-400 py-20">Seu carrinho está vazio </p>`;
                 document.getElementById('cart-total').textContent = 'R$ 0,00';
                 return;
             }
