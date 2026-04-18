@@ -46,6 +46,23 @@
             max-height: 95vh;
             overflow-y: auto;
         }
+
+        /* ==================== FORMATAÇÃO DAS IMAGENS ==================== */
+        .product-card img {
+            width: 100%;
+            height: 260px;
+            object-fit: contain;
+            background-color: #f8fafc;
+            padding: 12px;
+        }
+
+        #modal-imagem {
+            width: 100%;
+            height: 320px;
+            object-fit: contain;
+            background-color: #f8fafc;
+            border-radius: 16px;
+        }
     </style>
 </head>
 <body class="bg-slate-50">
@@ -89,7 +106,7 @@
                             class="text-4xl leading-none text-slate-400 hover:text-slate-700 transition">×</button>
                 </div>
                 
-                <img id="modal-imagem" class="w-full h-72 object-cover rounded-2xl mb-6 shadow-sm" alt="Celular">
+                <img id="modal-imagem" class="w-full h-72" alt="Celular">
 
                 <p id="modal-descricao" class="text-slate-600 mb-6 leading-relaxed"></p>
 
@@ -264,54 +281,138 @@
     <script>
         // ==================== PRODUTOS ====================
         let produtos = [
+
+            //-------------------- Celular 1 ------------------ //
             {
                 id: 1,
-                nome: "iPhone 15 Pro",
-                descricao: "Tela Super Retina XDR 6.1” • Câmera 48MP • Chip A17 Pro • Titânio",
-                precoBase: 6799,
-                imagemBase: "https://picsum.photos/id/1015/800/600",
+                nome: "iPhone 16 ",
+                descricao: "câmera dupla de 48 MP (Fusion) e 12 MP Ultra Angular",
+                precoBase: 9499,
+                imagemBase: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTbBB5qvhsvoauxS4e3tAUatO1BCwLKhL3lnlbkg-tAmI-HFdkPIMMKN7lftzc7R5sfzoY8L2vaFRU7DNDZ4TBOa3mHWRsVxzT01uYtPq5ceQWNtyS9pyTdy-F1NkVKO3gAlmzdYlA&usqp=CAc",
+
                 cores: [
-                    { nome: "Titanio Natural", cor: "#c4c4c4", imagem: "https://picsum.photos/id/1015/800/600" },
-                    { nome: "Azul", cor: "#4a8cff", imagem: "https://picsum.photos/id/1011/800/600" },
-                    { nome: "Preto Espacial", cor: "#111111", imagem: "https://picsum.photos/id/1012/800/600" }
+                    { nome: "Rosa", cor: "#FF00FF", imagem: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTbBB5qvhsvoauxS4e3tAUatO1BCwLKhL3lnlbkg-tAmI-HFdkPIMMKN7lftzc7R5sfzoY8L2vaFRU7DNDZ4TBOa3mHWRsVxzT01uYtPq5ceQWNtyS9pyTdy-F1NkVKO3gAlmzdYlA&usqp=CAc" },
+                    { nome: "Azul", cor: "#63B8FF", imagem: "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTyZCEgqKSimaZa-9ephS0vtezL0hnQz1HphFnapeIhOfH8VBOUSiKG7PCZYStWwc8-B3aum9f9kgqAhAXZ3U3emPkNh3Dvom9v4SYYnHqJCur9KATQohQtsIVFv_wXNnYtxbIoiio&usqp=CAc" },
+                    { nome: "Preto Espacial", cor: "#111111", imagem: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSK4wbEfxvxfv_-WP-Ogf0mYxtPhBHtvkm8DOFmpRfOefQ-UTnfgtf5nDUL4xWeMhGxnXUiUDsAcAMQxQYvHXFfN5N52i0DMWyyngfrTGA6V--BQO4ogcUgPm_DWnzbcfVdj4czOJs&usqp=CAc" }
                 ],
                 armazenamento: [
                     { tamanho: "128GB", preco: 6799 },
-                    { tamanho: "256GB", preco: 7499 },
-                    { tamanho: "512GB", preco: 8599 }
+                    { tamanho: "256GB", preco: 9499 },
+                    { tamanho: "512GB", preco: 10599 }
                 ]
             },
+             
+            // ------------------- Celular 2 ------------------ //
             {
                 id: 2,
-                nome: "Samsung Galaxy S24 Ultra",
-                descricao: "Caneta S Pen • Câmera 200MP • Tela 6.8” Dynamic AMOLED • 120Hz",
+                nome: "Samsung Z Flip 6",
+                descricao: "câmera de nível profissional de 50MP",
                 precoBase: 5899,
-                imagemBase: "https://picsum.photos/id/1005/800/600",
+                imagemBase: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcT4La7W5pZv-WSiX3orApCPq_qhHKQ6neUm5LJpM4RERYHYjp2OrDv6wIQ33lx1NzLsq3K_nBkQLwfGR3CN1wpgeCkHcWOC3l6jTHa42ZFTm_TGLi43yTdMVYAw8H20cWyGadtkRsU&usqp=CAc",
                 cores: [
-                    { nome: "Titanium Gray", cor: "#555555", imagem: "https://picsum.photos/id/1005/800/600" },
-                    { nome: "Titanium Violet", cor: "#8b5cf6", imagem: "https://picsum.photos/id/870/800/600" },
-                    { nome: "Titanium Yellow", cor: "#eab308", imagem: "https://picsum.photos/id/201/800/600" }
+                    { nome: "Azul", cor: "#BBFFFF", imagem: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQG1MnPu_ZfeZLm3sF-DYdtkuQwpFiATrPTdK723qNN3uU1_Z7OHuIHvkJXEPNoH0Rc2i0rzaGGcSmbbnURDgidaQO1LpXjEeeMV9s_BfMioNxCrGZUEBMszmaFtI8XEGcM9j58Hcxf15o&usqp=CAc" },
+                    { nome: "Preto", cor: "#000000", imagem: "data:image/jpeg;base64,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" }
                 ],
                 armazenamento: [
                     { tamanho: "256GB", preco: 5899 },
                     { tamanho: "512GB", preco: 6599 }
                 ]
             },
+
+            // ------------------- Celular 3 ------------------ //
             {
                 id: 3,
-                nome: "Xiaomi 14T Pro",
-                descricao: "Câmera Leica • Processador Dimensity 9300+ • Carregamento 120W",
+                nome: "xiaomi poco x7",
+                descricao: "tela AMOLED de 6,67 (1.5K, 120Hz), processador MediaTek Dimensity e bateria de 6000mAh",
                 precoBase: 3299,
-                imagemBase: "https://picsum.photos/id/1016/800/600",
+                imagemBase: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTWsuNS4DtcXuUiXDBkMlFIia1OzhrjE6IHPQj_JCCrQZo5ZqFIeuz3uR-SiHzr9DbQ0JpOOlO8XoLDHWrnvwfHLn4HR11lQxQ3h5nyArxF75buYcR6GXupVs637tlKijZP2_QfdG0oYw&usqp=CAc",
                 cores: [
-                    { nome: "Preto", cor: "#111111", imagem: "https://picsum.photos/id/1016/800/600" },
-                    { nome: "Branco", cor: "#eeeeee", imagem: "https://picsum.photos/id/133/800/600" }
+                    { nome: "Preto", 
+                    cor: "#111111", 
+                    imagem: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTqHFX1n8RWSLtyP1aZPsQkTpvN3hcboh0kQyY9bS2HKoGnemXUNcKqoh1mXodNhud6_cRSLr9Uy6hkIRSCh5clEYS-IeQlg9tE_bVf0mrtgSTyrSP1lYn29ZfE_mpIkMzmXngWlKBnzrs&usqp=CAc" },
+                    
+                    { nome: "Verde", 
+                    cor: "#98FB98", 
+                    imagem: "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSKBFjU9aCu06-VCm3-lLZMIOlXjeWthNF9m1wGaiF3sXWju3gPbPSjPO3iTJgB7MwiERDCyABkx3vlVURKin98e0dU0TFZ2WepbQtfHBX9egb3Y987iiQssJAkuqODI01wAsdD9WQL7A&usqp=CAc" }
                 ],
                 armazenamento: [
                     { tamanho: "256GB", preco: 3299 },
                     { tamanho: "512GB", preco: 3799 }
                 ]
-            }
+            },
+
+            // ------------------- Celular 4 ------------------ //
+            {
+                id: 4,
+                nome: "galaxy s24 ultra",
+                descricao: "A câmera Wide agora apresenta uma abertura 47% mais brilhante, que se abre para F1.4",
+                precoBase: 6000,
+                imagemBase: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcT3M8NMcrEZfpRH7xhBJXElMWnQSFN40rbSHLxm6RlvRIDtu-pyGngktH0SGwN8-EDg4yN-wbLv4QIxgp0ksz2lQlyFEXXaAaN43M8btsqcTRDr7KI8NRuxI5zWkScte7pXHaC7NQ&usqp=CAc",
+                cores: [
+
+
+                    { nome: "Preto", 
+                    cor: "#111111", 
+                    imagem: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcT3M8NMcrEZfpRH7xhBJXElMWnQSFN40rbSHLxm6RlvRIDtu-pyGngktH0SGwN8-EDg4yN-wbLv4QIxgp0ksz2lQlyFEXXaAaN43M8btsqcTRDr7KI8NRuxI5zWkScte7pXHaC7NQ&usqp=CAc" },
+                   
+                   
+                    { nome: "Cinza",
+                     cor: "#BEBEBE", 
+                     imagem: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcR3jWLI249usPkuvk3W_ruiBCK5Dbje108ZH8avU3HDvbYqonu8zN4eh8GIEO5K99IOv6Fa3b7dlC29ZFXx2JXfmTm-MjMTcSYGlHpsB8iHD5x_2EIXGUXD2YpWncsJpPNteJI808E&usqp=CAc" }
+                ],
+                armazenamento: [
+                    { tamanho: "256GB", preco: 6000 },
+                    { tamanho: "512GB", preco: 8000 }
+                ]
+            },
+
+            // ------------------- Celular 5 ------------------ //
+            {
+                id: 5,
+                nome: "Iphone 17 Pro Max",
+                descricao: "Desempenho excepcional, nova câmera frontal Center Stage. Sistema de câmera Pro e duração de bateria avançada",
+                precoBase: 12000,
+                imagemBase: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRrTzZQ67fDKTgLMPKPsEA_fS3_R2-pVqU0svJ6Py1xnXyl8nVNMk71dtR4-uxm6WnWITLp1PGf7LInjGbv5mEnAtZ6MONnfX_9xg_OjJxlIQCuK7oQ2txTZto75tDA21eHUyK3KQ&usqp=CAc",
+                cores: 
+                [
+                    { nome: "Laranja", 
+                    cor: "#FFA500", 
+                    imagem: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRrTzZQ67fDKTgLMPKPsEA_fS3_R2-pVqU0svJ6Py1xnXyl8nVNMk71dtR4-uxm6WnWITLp1PGf7LInjGbv5mEnAtZ6MONnfX_9xg_OjJxlIQCuK7oQ2txTZto75tDA21eHUyK3KQ&usqp=CAc" },
+                    
+                    { nome: "Prateado", 
+                    cor: "#CDC9C9", 
+                    imagem: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQzqG7xYdg-YsjhX4K7ALm55zWzvKEHpffmZhjmtSfLV1pZ3hjhXr9We0V9HB-1NXAznnedgaqR3ApuxYBxEb9yl3049UTi0V1FjnWDXyIyKbHRSYwYkfJjk2twkhrTgov2FLsDth3LPg&usqp=CAc" }
+                ],
+                armazenamento: [
+                    { tamanho: "256GB", preco: 12000 },
+                    { tamanho: "512GB", preco: 14000 }
+                ]
+            },
+
+                        // ------------------- Celular 6 ------------------ //
+            {
+                id: 6,
+                nome: "OPPO Find X9 Pro",
+                descricao: " Sensor principal de 50MP com OIS de 4 eixos, ultra grande angular de 50MP e a revolucionária telefoto de 200MP com OIS",
+                precoBase: 92000,
+                imagemBase: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQwzR6QYlUxFXH8zm8FQ6sMl8NfLlDoJiWRSZ-aCqemz3IPUV2mWJRiA2q6NimOmGL1ETDmiGXUbTcfklkW14Asu8Ecz_JXHh3cQbxuDo0K8atOaU_Tt5oMbvp5mwr8TosebM8yPQ&usqp=CAc",
+                cores: 
+                [
+                    { nome: "Vinho", 
+                    cor: "#8B0000", 
+                    imagem: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTU24KQV4_0izS3gFPF-6fqH535FXrc0qX9pFR4a7E9gYEJ22I1129SiB_1arYS1DfgGk5eqwF8jy6VYAasD0wMWvqJIT7gEqC_8uyhR74HseN6HkCyrxsqJpLElbyoNEKoW-GEwtY&usqp=CAc" },
+                    
+                    { nome: "Grafite", 
+                    cor: "#8B8970", 
+                    imagem: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQkcx-nqAMwR-LiXlf0dp8f9XyfBJKghPiEyx2tyxsxz3ETD5kezCuDzhrjCJTOXrsB1vJ4DLH2zAlr05yx4JMy3MQqm2zuTBmSFqOEbZo2HrhNmnis-sLN3iL_CB9b3JNkap3RmdY&usqp=CAc" }
+                ],
+                armazenamento: [
+                    { tamanho: "512GB", preco: 9200 },
+                    { tamanho: "1TB", preco: 10000 }
+                ]
+            },
+
+
         ];
 
         let carrinho = [];
@@ -333,7 +434,7 @@
                 html += `
                     <div onclick="abrirModalProduto(${prod.id})" 
                          class="product-card bg-white rounded-3xl overflow-hidden shadow-sm cursor-pointer">
-                        <img src="${prod.imagemBase}" class="w-full h-64 object-cover">
+                        <img src="${prod.imagemBase}">
                         <div class="p-6">
                             <h3 class="font-semibold text-xl mb-2">${prod.nome}</h3>
                             <p class="text-slate-500 text-sm line-clamp-3 mb-4">${prod.descricao}</p>
@@ -443,7 +544,7 @@
                 subtotal += item.preco;
                 html += `
                     <div class="flex gap-4 border-b pb-6">
-                        <img src="${item.imagem}" class="w-20 h-20 object-cover rounded-2xl">
+                        <img src="${item.imagem}" class="w-20 h-20 object-contain rounded-2xl bg-slate-100">
                         <div class="flex-1">
                             <p class="font-medium">${item.nome}</p>
                             <p class="text-sm text-slate-500">${item.cor} • ${item.armazenamento}</p>
